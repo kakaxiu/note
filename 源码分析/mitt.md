@@ -42,6 +42,7 @@ export type EventType = string | symbol;
 // An event handler can take an optional event argument
 // and should not return a value
 export type Handler<T = any> = (event?: T) => void;
+// 占位符句柄，与普通句柄的区别是监听*事件，传参多了一个
 export type WildcardHandler = (type: EventType, event?: any) => void;
 
 // 句柄数组（事件注册数组，多个函数可以顺序执行）
@@ -53,6 +54,7 @@ export type WildCardEventHandlerList = Array<WildcardHandler>;
 // A map of event types and their corresponding event handlers.
 export type EventHandlerMap = Map<EventType, EventHandlerList | WildCardEventHandlerList>;
 
+// 方法对象类型定义
 export interface Emitter {
 	all: EventHandlerMap;
 
